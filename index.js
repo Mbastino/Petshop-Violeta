@@ -1,4 +1,4 @@
-let productoSeleccionado = parseInt(prompt('Selecciona el producto que desee comprar: \n0.Dogui $500 \n1.Royal Canin $600 \n2.Dog Chow $450 \n3.Ken-L $400'))
+/* let productoSeleccionado = parseInt(prompt('Selecciona el producto que desee comprar: \n0.Dogui $500 \n1.Royal Canin $600 \n2.Dog Chow $450 \n3.Ken-L $400'))
 let totalCompra = 0
 let seguirComprando = true
 let decision
@@ -34,5 +34,5 @@ while(seguirComprando === true){
     }
 }
 
-alert(`El total de la compra es ${totalCompra}`)
+alert(`El total de la compra es ${totalCompra}`) */
 
