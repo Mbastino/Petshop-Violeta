@@ -32,42 +32,45 @@ botonVaciar.addEventListener('click', () => {
     actualizarCarrito()
 })
 
-
-stockProductos.forEach((producto) => {
-    const div = document.createElement('div')
-    div.classList.add('producto')
-    div.innerHTML = `
-    <img src=${producto.img} alt= "">
-    <h3>${producto.nombre}</h3>
-    <p>${producto.desc}</p>
-    <p class="precioProducto">Precio:$ ${producto.precio}</p>
-    <button id="agregar${producto.id}" class="boton-agregar">Agregar <i class="bi bi-cart-fill"></i></i></button>
-    `
-    contenedorProductos.appendChild(div)
-   
-    const boton = document.getElementById(`agregar${producto.id}`)
-    
-
-    boton.addEventListener('click', () => {
-        Toastify({
-            text: "Producto agregado al carrito",
-            duration: 1500,
-            destination: "",
-            newWindow: true,
-            close: false,
-            gravity: "top",
-            position: "center", 
-            stopOnFocus: true, 
-            style: {
-              background: "linear-gradient(to right, #B279A7, #D387AB)",
-            },
-            onClick: function(){} 
-          }).showToast();
-
-        agregarAlCarrito(producto.id)
+fetch("stock.json")
+    .then(response => response.json())
+    .then(stockProductos => (
+        stockProductos.forEach((producto) => {
+            const div = document.createElement('div')
+            div.classList.add('producto')
+            div.innerHTML = `
+            <img src=${producto.img} alt= "">
+            <h3>${producto.nombre}</h3>
+            <p>${producto.desc}</p>
+            <p class="precioProducto">Precio:$ ${producto.precio}</p>
+            <button id="agregar${producto.id}" class="boton-agregar">Agregar <i class="bi bi-cart-fill"></i></i></button>
+            `
+            contenedorProductos.appendChild(div)
+           
+            const boton = document.getElementById(`agregar${producto.id}`)
+            
+            boton.addEventListener('click', () => {
+                Toastify({
+                    text: "Producto agregado al carrito",
+                    duration: 1500,
+                    destination: "",
+                    newWindow: true,
+                    close: false,
+                    gravity: "top",
+                    position: "center", 
+                    stopOnFocus: true, 
+                    style: {
+                      background: "linear-gradient(to right, #B279A7, #D387AB)",
+                    },
+                    onClick: function(){} 
+                  }).showToast();
         
-    })
-})
+                agregarAlCarrito(producto.id)
+                
+            })
+        })
+    ))
+
 
 
 const agregarAlCarrito = (prodId) => {
