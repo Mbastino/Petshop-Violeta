@@ -22,6 +22,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
 botonVaciar.addEventListener('click', () => {
     carrito.length = 0
+    Swal.fire({
+        title: 'Vaciaste el carrito!',
+        icon: 'warning',
+        confirmButtonText: 'Aceptar',
+        iconColor: 'red',
+        iconHtml: '<i class="bi bi-cart-x"></i>'
+      })
     actualizarCarrito()
 })
 
@@ -42,7 +49,21 @@ stockProductos.forEach((producto) => {
     
 
     boton.addEventListener('click', () => {
-        
+        Toastify({
+            text: "Producto agregado al carrito",
+            duration: 1500,
+            destination: "",
+            newWindow: true,
+            close: false,
+            gravity: "top",
+            position: "center", 
+            stopOnFocus: true, 
+            style: {
+              background: "linear-gradient(to right, #B279A7, #D387AB)",
+            },
+            onClick: function(){} 
+          }).showToast();
+
         agregarAlCarrito(producto.id)
         
     })
