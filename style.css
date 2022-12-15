@@ -182,4 +182,12 @@ p {
   outline: none;
 }
 
-/*# sourceMappingURL=style.css.map */
+.txt-footer{
+  text-align: center;
+}
+
+#divDolar{
+  text-align: center;
+  width: 100%;
+  background-color: violet;
+}
